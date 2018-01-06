@@ -3,13 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-<<<<<<< HEAD
-import './assets/style/reset.css'
-import './assets/style/border.css'
-import './assets/style/iconfont/iconfont.css'
-=======
+import 'style/reset.css'
+import 'style/border.css'
+import 'style/iconfont/iconfont.css'
 
->>>>>>> 20180102-liuyi
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
