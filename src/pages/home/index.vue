@@ -2,7 +2,9 @@
   <div class="main">
     <div class="header">
     <div class="header-title">
+      <router-link to="/homepage">
     <img src="../resources/sy.png" alt="" class="header-img">
+    </router-link>
   </div>
   <h2 class="main-h">七分饱</h2>
   <p class="main-p">每餐七分饱，健康长寿活到老</p>
@@ -11,7 +13,12 @@
 </template>
 <script>
   export default {
-    name: 'index'
+    name: 'index',
+    created () {
+      setTimeout(function () {
+        window.location.href = 'http://localhost:8080/#/homepage'
+      }, 3000)
+    }
   }
 </script>
 <style scoped lang="stylus">
