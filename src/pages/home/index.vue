@@ -13,12 +13,7 @@
 </template>
 <script>
   export default {
-    name: 'index',
-    created () {
-      setTimeout(function () {
-        window.location.href = 'http://localhost:8080/#/homepage'
-      }, 3000)
-    }
+    name: 'index'
   }
 </script>
 <style scoped lang="stylus">
