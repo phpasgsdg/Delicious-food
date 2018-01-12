@@ -5,7 +5,7 @@
 </template>
 <script>
   export default {
-  	name: "seach"
+  	name: 'seach'
   }
 </script>
 <style scoped lang="stylus"></style>
