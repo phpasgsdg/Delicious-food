@@ -1,12 +1,37 @@
 <template>
+  <div>
   <div class="header">
     <div class="back">主页</div>
-    <div class="icon iconfont">&#xe603;</div>
+    <div class="icon iconfont" @click="showGallary">&#xe603;
+   
+  </div>
+  </div>
+    <gallary v-show="show"
+             @close="handleGallaryClose"></gallary>
+
   </div>
 </template>
 
 <script>
-  export default {}
+  import Gallary from './gallary'
+  export default {
+    data () {
+      return {
+        show: false
+      }
+    },
+    components: {
+      Gallary
+    },
+    methods: {
+      showGallary () {
+        this.show = true
+      },
+      handleGallaryClose () {
+        this.show = false
+      }
+    }
+  }
 </script>
 
 <style scoped lang="stylus">
@@ -21,6 +46,7 @@
       font-size: .32rem
       color: #fff
     .icon
+      display: flex
       position: absolute
       top: .30rem
       right: .21rem

@@ -26,7 +26,7 @@
     height: 1.1rem
     background: #fbfbfb
     &::before
-      border-top: 1px solid #999
+      border-top: 1px solid #000
     .fmain
       display: flex
     .foot-title
@@ -39,7 +39,7 @@
 	  .foot-img
 	    width: 0.54rem
 	    height: .54rem
-	    margin-bottom: .05rem
+	    margin-bottom: .1rem
 	  .foot-letter
 	    font-size: .22rem
 
