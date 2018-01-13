@@ -1,17 +1,18 @@
 <template>
   <div class="container">
-    <login-header></login-header>
-    <router-view></router-view>
+    <register-header></register-header>
+    <register-body></register-body>
   </div>
 </template>
 
 <script>
-  import LoginHeader from 'base/header/header'
-
+  import RegisterHeader from 'base/header/header'
+  import RegisterBody from './register'
   export default {
     name: 'login',
     components: {
-      LoginHeader
+      RegisterHeader,
+      RegisterBody
     }
   }
 </script>
@@ -27,5 +28,5 @@
     right: 0
     bottom: 0
     background: #8ffbe5
-    background: linear-gradient(top, #8ffbe5, #2fd6b5)
+    background: linear-gradient(top, #8ffbe5, #2fd6b5)  
 </style>

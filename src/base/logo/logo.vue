@@ -24,7 +24,7 @@
     top: -.98rem
     left: 2.35rem
     border-radius: .98rem
-    box-shadow: 0 0 .3rem #999
+    box-shadow: 0 0 .3rem #00876b
     background: #fff
     .logo
       position: absolute

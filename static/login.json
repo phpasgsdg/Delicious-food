@@ -1,0 +1,12 @@
+{
+  "ret": true,
+  "data": {
+    "login": [{
+      "username": "liuyi",
+      "password": "111111"
+      },{
+        "username": "admin",
+        "password": "123456"
+    }]
+  }
+}
