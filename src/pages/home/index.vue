@@ -15,8 +15,9 @@
   export default {
     name: 'index',
     created () {
+      var this_ = this
       setTimeout(function () {
-        window.location.href = 'http://localhost:8080/#/homepage'
+        this_.$router.push('/homepage')
       }, 3000)
     }
   }
