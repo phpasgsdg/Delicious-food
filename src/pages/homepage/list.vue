@@ -1,49 +1,11 @@
-<template>
+  <template>
   <div class="list" ref="scroller">
     <div class="list-title" >
-      <div class="list-z border-rightbottom" >
-        <img class="icon" src="../resources/list_03.png"  alt="">
-        <div class="letter">推荐</div>   
-      </div>
-      <div class="list-z border-rightbottom">
-        <img class="icon" src="../resources/list_05.png" alt="">
-        <div class="letter">饮食禁忌</div>   
-      </div>
-      <div class="list-z list-r border-rightbottom">
-        <img class="icon" src="../resources/list_07.png" alt="">
-        <div class="letter">健脑益智</div>   
-      </div>
-      <div class="list-z border-rightbottom">
-        <img class="icon" src="../resources/list_13.png" alt="">
-        <div class="letter">防癌</div>   
-      </div>
-      <div class="list-z border-rightbottom">
-        <img class="icon" src="../resources/list_15.png" alt="">
-        <div class="letter">助睡眠</div>   
-      </div>
-      <div class="list-z list-r border-rightbottom">
-        <img class="icon" src="../resources/list_17.png" alt="">
-        <div class="letter">补血养肾</div>   
-      </div>
-      <div class="list-z border-rightbottom">
-        <img class="icon" src="../resources/list_21.png" alt="">
-        <div class="letter">健康养胃</div>   
-      </div>
-      <div class="list-z border-rightbottom">
-        <img class="icon" src="../resources/list_22.png" alt="">
-        <div class="letter">美容减肥</div>   
-      </div>
-      <div class="list-z list-r border-rightbottom">
-        <img class="icon" src="../resources/list_23.png" alt="">
-        <div class="letter">降血糖血脂</div>   
-      </div>
-      <div class="list-z border-rightbottom list-border ">
-        <img class="icon" src="../resources/list_27.png" alt="">
-        <div class="letter">防霾</div>   
-      </div>
-     <div class="list-z border-rightbottom list-border">
-        <img class="icon" src="../resources/list_29.png" alt="">
-        <div class="letter">提高免疫力</div>   
+      <div class="list-z border-rightbottom"  
+           v-for="(item, index) in lists"
+           :key="index" >
+        <img class="icon" :src="item.imgUrl"  alt="">
+        <div class="letter">{{item.state}}</div>   
       </div>
     </div>
   </div>
@@ -79,6 +41,21 @@
       display: flex
       flex-wrap: wrap
       height:100%
+    .list-title>div:nth-child(3)
+      &::before
+        border-right: none
+    .list-title>div:nth-child(6)
+      &::before
+        border-right: none
+    .list-title>div:nth-child(9)
+      &::before
+        border-right: none
+    .list-title>div:nth-child(10)
+      &::after
+        border-bottom: none
+    .list-title>div:nth-child(11)
+      &::after
+        border-bottom: none
 	  .list-z
 	    width: 33.3%
 	    height: 25%
@@ -97,11 +74,4 @@
 		  .letter
 		    font-size: .28rem
 		    color: #333333
-    .list-r
-      &::before
-        border-right: none
-    .list-border
-      &::after
-        border-bottom: none
-
 </style>

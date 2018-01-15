@@ -37,13 +37,19 @@
 <style scoped lang="stylus">
   .header
     position: relative
+    display: flex
+    justify-content: center
     height: 1rem
     background: #2fd6b4
     .back
       line-height: 1rem
+      width: 1rem
       text-align: center
       font-weight: bold
       font-size: .32rem
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
       color: #fff
     .icon
       display: flex

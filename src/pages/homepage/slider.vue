@@ -1,13 +1,8 @@
 <template>
   <swiper class="banner index-banner" :options="swiperOption">
-    <swiper-slide >
-      <img class="banner-img" src="../resources/banner1.jpg" />
-    </swiper-slide>
-    <swiper-slide >
-      <img class="banner-img" src="../resources/banner.jpg" />
-    </swiper-slide>
-    <swiper-slide >
-      <img class="banner-img" src="../resources/banner2.jpg" />
+    <swiper-slide v-for="(item, index) in sliders"
+           :key="index" >
+      <img class="banner-img" :src="item.imgUrl || '/static/imgs/banner.jpg'" />
     </swiper-slide>
     <div class="swiper-pagination"  slot="pagination"></div>
   </swiper>

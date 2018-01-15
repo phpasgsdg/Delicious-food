@@ -2,7 +2,7 @@
   <div class="hompage">
     <index-header></index-header>
 	<slider :sliders="sliders"></slider>
-  <list></list>
+  <list :lists="lists"></list>
   <foot></foot>
   </div>
 </template>
@@ -22,12 +22,13 @@
     },
     data () {
       return {
-        sliders: []
+        sliders: [],
+        lists: []
       }
     },
     methods: {
       getIndexData () {
-        axios.get('/static/index.json')
+        axios.get('/api/index.json')
           .then(this.handleDataSucc.bind(this))
           .catch(this.handleDataError.bind(this))
       },
@@ -35,6 +36,7 @@
         res = res ? res.data : null
         if (res && res.ret && res.data) {
           res.data.slider && (this.sliders = res.data.slider)
+          res.data.lists && (this.lists = res.data.lists)
         } else {
           this.handleDataError()
         }

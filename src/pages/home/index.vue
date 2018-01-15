@@ -3,7 +3,7 @@
     <div class="header">
     <div class="header-title">
       <router-link to="/homepage">
-    <img src="../resources/sy.png" alt="" class="header-img">
+    <img src="/static/imgs/sy.png" alt="" class="header-img">
     </router-link>
   </div>
   <h2 class="main-h">七分饱</h2>
