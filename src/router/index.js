@@ -6,6 +6,8 @@ import PwdLogin from 'pages/login/pwdlogin'
 import PhoneLogin from 'pages/login/phonelogin'
 import Forget from 'pages/login/forget'
 import Register from 'pages/register'
+import homepage from 'homepage/index'
+import seach from 'seach/index'
 
 Vue.use(Router)
 
@@ -39,6 +41,16 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: Register
+    },
+    {
+      path: '/homepage',
+      name: 'homepage',
+      component: homepage
+    },
+    {
+      path: '/seach',
+      name: 'seach',
+      component: seach
     }
   ]
 })

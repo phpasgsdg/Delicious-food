@@ -39,7 +39,7 @@
       handleSendPassword () {
         const reg = /^(13[0-9]|14[0-9]|15[0-9]|166|17[0-9]|18[0-9]|19[8|9])\d{8}$/
         if (reg.test(this.cellNumber)) {
-          
+          console.log('本来应该发axios请求的，但是因为没有第三方授权，就没写')
         }
       }
     }

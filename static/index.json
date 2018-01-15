@@ -1,0 +1,21 @@
+{
+	"ret": true,
+	"data": {
+	  "slider":[{
+	  	"id":1,
+	  	"imgUrl":"http://localhost:8080/static/img/banner.9c1bbe2.png"
+	  	},
+	  	{
+	  	"id":2,
+	  	"imgUrl":"http://localhost:8080/static/img/banner.9c1bbe2.png"
+	  	},
+	  	{
+	  	"id":3,
+	  	"imgUrl":"http://localhost:8080/static/img/banner.9c1bbe2.png"
+	  	},
+	  	{
+	  	"id":4,
+	  	"imgUrl":"http://localhost:8080/static/img/banner.9c1bbe2.png"
+	  	}]
+	}
+}

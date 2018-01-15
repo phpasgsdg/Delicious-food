@@ -38,7 +38,10 @@ module.exports = {
       '@': resolve('src'),
       'pages': resolve('src/pages'),
       'style': resolve('src/assets/style'),
-      'base': resolve('src/base')
+      'base': resolve('src/base'),
+      'home': resolve('src/pages/home'),
+      'homepage': resolve('src/pages/homepage'),
+      'seach': resolve('src/pages/seach')
     }
   },
   module: {
