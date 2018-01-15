@@ -14,3 +14,29 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
+
+.icon-yunduo:before { content: "\e661"; }
+
+.icon-bu:before { content: "\e610"; }
+
+.icon-wu:before { content: "\e8b1"; }
+
+.icon-jinzhi:before { content: "\e623"; }
+
+.icon-sousuo:before { content: "\e603"; }
+
+.icon-fangmaishachuang:before { content: "\e62a"; }
+
+.icon-naodongdakai:before { content: "\e60e"; }
+
+.icon-jingyu:before { content: "\e6a7"; }
+
+.icon-jirou:before { content: "\e6d6"; }
+
+.icon-weichangwaike:before { content: "\e636"; }
+
+.icon-REMshuimian:before { content: "\e608"; }
+
+

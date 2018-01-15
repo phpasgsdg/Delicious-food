@@ -2,7 +2,8 @@
   <div class="container">
     <div class="header">
       <img src="/static/imgs/my.png" class="img-header">
-     用户名
+      <router-link to="/register"><span class="register">注册/</span></router-link>
+      <router-link to="/login"><span class="login">登录</span></router-link>
     </div>
     <ul class="list">
       <li class="item-list border-top">
@@ -56,6 +57,10 @@
       line-height: 2.24rem
       font-size: .32rem
       color: #666
+      .register
+        color: #666
+      .login
+        color: #666
       .img-header
         width: 1.02rem
         height: 1.02rem

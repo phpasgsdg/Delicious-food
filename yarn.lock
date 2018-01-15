@@ -868,7 +868,7 @@ bcrypt-pbkdf@^1.0.0:
 
 better-scroll@^1.7.2:
   version "1.7.2"
-  resolved "https://registry.yarnpkg.com/better-scroll/-/better-scroll-1.7.2.tgz#13284c34d426d87c5613da477e2f2dcc8344c61e"
+  resolved "http://registry.npm.taobao.org/better-scroll/download/better-scroll-1.7.2.tgz#13284c34d426d87c5613da477e2f2dcc8344c61e"
   dependencies:
     babel-runtime "^6.0.0"
 
