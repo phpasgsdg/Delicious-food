@@ -8,6 +8,7 @@ import Forget from 'pages/login/forget'
 import Register from 'pages/register'
 import homepage from 'homepage/index'
 import seach from 'seach/index'
+import inquire from 'inquire/index'
 
 Vue.use(Router)
 
@@ -51,6 +52,11 @@ export default new Router({
       path: '/seach',
       name: 'seach',
       component: seach
+    },
+    {
+      path: '/inquire',
+      name: 'inquire',
+      component: inquire
     }
   ]
 })

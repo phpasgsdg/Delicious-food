@@ -3,13 +3,15 @@
     <div class="fmain">
 	    <div class="foot-title" >
         <router-link to="/homepage">
-	      <img class="foot-img" src="../resources/f_03.png" alt="">
+	      <div class="foot-img fot iconfont">&#xe63d;</div>
 	      <div class="foot-letter">主页</div>
         </router-link>     
 	    </div>
       <div class="foot-title" >
+        <router-link class="footlat" to="/inquire">
         <img class="foot-img" src="../resources/f_05.png" alt="">
-        <div class="foot-letter">营养查询</div>       
+        <div class="foot-letter">营养查询</div>
+        </router-link>       
       </div>
       <div class="foot-title" >
       <router-link to="/seach">
@@ -42,10 +44,18 @@
       flex-direction: column
       justify-content: center
       align-items: center
+      .footlat
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
 	    .foot-img
 	      width: 0.54rem
 	      height: .54rem
 	      margin-bottom: .1rem
+      .fot
+        font-size: .54rem
+        color: #333333
 	    .foot-letter
         color: #333333
 	      ont-size: .22rem

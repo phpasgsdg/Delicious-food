@@ -41,7 +41,8 @@ module.exports = {
       'base': resolve('src/base'),
       'home': resolve('src/pages/home'),
       'homepage': resolve('src/pages/homepage'),
-      'seach': resolve('src/pages/seach')
+      'seach': resolve('src/pages/seach'),
+      'inquire': resolve('src/pages/inquire'),
     }
   },
   module: {
