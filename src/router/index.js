@@ -60,7 +60,7 @@ export default new Router({
       component: inquire
     },
     {
-      path: '/explain',
+      path: '/explain/:sightId',
       name: 'explain',
       component: explain
     }

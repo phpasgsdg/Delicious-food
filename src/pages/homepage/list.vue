@@ -1,14 +1,12 @@
   <template>
   <div class="list" ref="scroller">
     <div class="list-title" >
-      <div class="list-z border-rightbottom"  
+      <router-link class="list-z border-rightbottom"  
            v-for="(item, index) in lists"
-           :key="index">
-        <router-link to="/explain">
+           :key="index" tag="div" :to="'/explain/' + item.id">
         <img class="icon" :src="item.imgUrl"  alt="">
-        </router-link>
         <div class="letter">{{item.state}}</div>   
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
