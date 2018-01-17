@@ -3,8 +3,10 @@
     <div class="list-title" >
       <div class="list-z border-rightbottom"  
            v-for="(item, index) in lists"
-           :key="index" >
+           :key="index">
+        <router-link to="/explain">
         <img class="icon" :src="item.imgUrl"  alt="">
+        </router-link>
         <div class="letter">{{item.state}}</div>   
       </div>
     </div>

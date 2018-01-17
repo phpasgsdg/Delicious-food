@@ -43,6 +43,7 @@ module.exports = {
       'homepage': resolve('src/pages/homepage'),
       'seach': resolve('src/pages/seach'),
       'inquire': resolve('src/pages/inquire'),
+      'explain': resolve('src/pages/explain'),
     }
   },
   module: {
