@@ -4,16 +4,26 @@
      <div class="header">
        <div class="header-z">
          <i class="iconfont header-seach" @click="handleInput">&#xe603;</i>
-         <input type="text" class="import"  placeholder="输入你要搜索的内容" ref="inp">
+         <input class="import" @input="handleInputChange" placeholder="输入你要搜索的内容" ref="inp" >
        </div> 
        <div @click="handleGallaryClose" class="cancel iconfont">&#xe613;</div>
      </div>
    </div>
+   <div class="search-list" v-show="showList" ref="list">
+      <ul>
+        <li class="search-item border-bottom" v-show="!filterResult.length">
+          无数据显示
+        </li>
+        <li class="search-item border-bottom" v-for="item in filterResult" @click="handleDianji">
+          {{item.name}}
+        </li>
+      </ul>
+    </div>
   <div class="collect">
     <div class="history">
       <h2 class="history-title">历史记录<span class="history-clear" @click="handleClear">清除</span></h2>
       <ul class="history-list">
-        <li class="list-h" v-for="item of list">{{item}}</li>
+        <li class="list-h" v-for="item of list">{{item.name}}</li>
       </ul>
     </div>
     <div class="hot">
@@ -30,11 +40,14 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: 'gallary',
     data () {
       return {
-        list: ['减肥', '吃什么能降血脂', '减肥']
+        list: [{'name': '减肥', 'spell': 'jianfei'}, {'name': '吃什么能降血脂', 'spell': 'chishemenengjiangxuezhi'}, {'name': '多运动', 'spell': 'duoyund'}],
+        showList: false,
+        filterResult: []
       }
     },
     methods: {
@@ -42,11 +55,32 @@
         this.$emit('close')
       },
       handleInput (e) {
-        this.list.push(this.$refs.inp.value)
+        axios.get('/api/search.json')
+          .then(this.handleGetListSucc.bind(this))
+          .catch(this.handleGetListErr.bind(this))
         this.$refs.inp.value = ''
+      },
+      handleGetListSucc (res) {
+        alert(123)
+      },
+      handleDianji (e) {
+        console.log(e.target.innerHTMl)
       },
       handleClear (e) {
         this.list = []
+      },
+      handleInputChange (e) {
+        const value = e.target.value.toLowerCase()
+        if (value) {
+          this.showList = true
+          this.filterResult = this.list.filter((item) => {
+            if (item.spell.indexOf(value) > -1 || item.name.indexOf(value) > -1) {
+              return true
+            }
+          })
+        } else {
+          this.showList = false
+        }
       }
     }
   }
@@ -93,6 +127,9 @@
           margin-right: 0.12rem
           font-size: .38rem
           color: #000
+    .search-list
+        .search-item 
+          margin-bottom: .2rem
     .collect
       flex: 1
       margin: 0 .2rem
