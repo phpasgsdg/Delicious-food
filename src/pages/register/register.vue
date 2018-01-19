@@ -85,6 +85,9 @@
         } else {
           alert('用户名重复')
         }
+      },
+      handleRegisterErr () {
+        console.log('请求失败')
       }
     }
   }

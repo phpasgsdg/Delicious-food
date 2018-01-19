@@ -5,8 +5,14 @@
     </div>
     <div class="banner">
       <img src="/static/imgs/1.png" alt="" class="img">
-      <router-link to="/login">
-      <div class="icon iconfont">点击登录 &#xe62d;</div>
+      <div class="person"  v-for="(item, index) in personage"
+           :key="index" v-show = "show">
+        <img :src=" item.imgUrl" alt="" class="person-img">
+        <div class="person-title">{{item.title}}</div>
+      </div>
+      
+       <router-link to="/login">
+      <div class="icon iconfont" @click="handleLog" >点击登录 &#xe62d;</div>
       </router-link>
     </div>
     <div class="list">
@@ -53,11 +59,41 @@
 </template>
 
 <script>
+  import axios from 'axios'
   import foot from '../homepage/foot.vue'
   export default {
     name: 'index',
+    data () {
+      return {
+        show: false,
+        personage: []
+      }
+    },
     components: {
       foot
+    },
+    methods: {
+      getMessage () {
+        axios.get('/api/personage.json')
+          .then(this.handleDataSucc.bind(this))
+          .catch(this.handleDataError.bind(this))
+      },
+      handleDataSucc (res) {
+        res = res ? res.data : null
+        if (res && res.ret && res.data) {
+          res.data.personage && (this.personage = res.data.personage)
+        } else {
+          this.handleDataError()
+        }
+      },
+      handleDataError () {
+      },
+      handleLog () {
+        this.show = '!show'
+      }
+    },
+    created () {
+      this.getMessage()
     }
   }
 </script>
@@ -89,6 +125,19 @@
       text-align: center
       .img
         width: 100%
+      .person
+        position: absolute
+        top: 12%
+        left: 36%
+        .person-img
+          width: 2.12rem
+          height: 2.12rem
+          border-radius: 1.06rem
+          margin-bottom: .24rem
+        .person-title
+          z-index: 2
+          font-size: .3rem
+          color: #fefefe
       .icon
         position: absolute
         top: 2.78rem
