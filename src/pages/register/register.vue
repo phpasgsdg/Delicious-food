@@ -12,7 +12,7 @@
       <div class="left-area iconfont">
         &#xe620;
       </div>
-      <input class="right-area" type="password" placeholder="请填写密码5-17位" v-model="password" @change="handlePwdChange" key="2">
+      <input class="right-area" type="password" placeholder="请填写密码" v-model="password" @change="handlePwdChange" key="2">
     </div>
     <div class="register-area">
       <div class="left-area iconfont">
@@ -54,7 +54,7 @@
         }
       },
       handlePwdChange () {
-        const reg = /^[a-zA-Z0-9_]{5,17}$/
+        const reg = /^[a-zA-Z]\w{5,17}$/
         if (reg.test(this.password)) {
           console.log('合法')
         } else {
@@ -79,8 +79,7 @@
         }
       },
       handleRegisterSucc (res) {
-        console.log(res)
-        if (res.data.isRegister) {
+        if (res.data.status === 1) {
           this.$router.push('/login')
         } else {
           alert('用户名重复')

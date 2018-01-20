@@ -49,12 +49,12 @@
       },
       handleGetMessageSucc (res) {
         const isLogin = res.data.isLogin
-        if (isLogin) {
-          this.$router.push('/')
+        if (isLogin && res.data.status === 1) {
+          this.$router.push('/homepage')
         }
       },
-      handleGetMessageErr (res) {
-        alert('链接错误')
+      handleGetMessageErr () {
+        console.log('err')
       },
       handleClickLogin () {
         this.getLoginMessage()

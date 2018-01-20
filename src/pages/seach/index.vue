@@ -74,7 +74,7 @@
     },
     methods: {
       getMessage () {
-        axios.get('/api/personage.json')
+        axios.get('/static/personage.json')
           .then(this.handleDataSucc.bind(this))
           .catch(this.handleDataError.bind(this))
       },
