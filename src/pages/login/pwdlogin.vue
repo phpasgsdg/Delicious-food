@@ -53,8 +53,8 @@
           this.$router.push('/')
         }
       },
-      handleGetMessageErr () {
-        console.log('err')
+      handleGetMessageErr (res) {
+        alert('链接错误')
       },
       handleClickLogin () {
         this.getLoginMessage()

@@ -71,7 +71,7 @@
       },
       handleRegister () {
         if (this.userFlag && this.pwdFlag) {
-          axios.post('/api/register.json', {username: this.username, password: this.password})
+          axios.post('/index/user/register', {username: this.username, password: this.password})
             .then(this.handleRegisterSucc.bind(this))
             .catch(this.handleRegisterErr.bind(this))
         } else {
