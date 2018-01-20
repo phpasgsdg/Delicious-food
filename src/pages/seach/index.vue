@@ -4,7 +4,7 @@
       我的
     </div>
     <div class="banner">
-      <img src="/static/imgs/1.png" alt="" class="img">
+      <img src="http://qifenbao.yungchoyee.top/public/static/imgs/1.png" alt="" class="img">
       <div class="person"  v-for="(item, index) in personage"
            :key="index" v-show = "show">
         <img :src=" item.imgUrl" alt="" class="person-img">
@@ -12,43 +12,23 @@
       </div>
       
        <router-link to="/login">
-      <div class="icon iconfont" @click="handleLog" >点击登录 &#xe62d;</div>
+      <div class="icon iconfont" >点击登录 &#xe62d;</div>
       </router-link>
     </div>
     <div class="list">
        <div class="list-h">
-          <div class="lt">
-            <img class="lt-img" src="/static/imgs/2.png" alt="">
-            <h2 class="letter">收藏</h2>
-          </div>
-          <div class="lt">
-            <img class="lt-img" src="/static/imgs/3.png" alt="">
-            <h2 class="letter">消息</h2>
-          </div>
-          <div class="lt">
-            <img class="lt-img" src="/static/imgs/4.png" alt="">
-            <h2 class="letter">签到</h2>
+          <div class="lt" v-for="(item, index) in message"
+           :key="index">
+            <img class="lt-img" :src=" item.imgUrl" alt="">
+            <h2 class="letter">{{item.state}}</h2>
           </div>
        </div>
        <div class="list-f">
-         <div class="lis border-topbottom">
+         <div class="lis border-topbottom" v-for="(item, index) in lately"
+           :key="index">
            <div class="lis-tit">
-             <img class="lis-img" src="/static/imgs/5.png" alt="">
-             <div class="lis-let">最近阅读</div>
-           </div>
-           <div class="lis-pot iconfont">&#xe62d;</div>
-         </div>
-         <div class="lis border-topbottom">
-           <div class="lis-tit">
-             <img class="lis-img" src="/static/imgs/6.png" alt="">
-             <div class="lis-let">邀请朋友</div>
-           </div>
-           <div class="lis-pot iconfont">&#xe62d;</div>
-         </div>
-         <div class="lis border-topbottom">
-           <div class="lis-tit">
-             <img class="lis-img" src="/static/imgs/7.png" alt="">
-             <div class="lis-let">设置</div>
+             <img class="lis-img" :src=" item.imgUrl" alt="">
+             <div class="lis-let">{{item.state}}</div>
            </div>
            <div class="lis-pot iconfont">&#xe62d;</div>
          </div>
@@ -66,7 +46,9 @@
     data () {
       return {
         show: false,
-        personage: []
+        personage: [],
+        message: [],
+        lately: []
       }
     },
     components: {
@@ -74,22 +56,22 @@
     },
     methods: {
       getMessage () {
-        axios.get('/static/personage.json')
+        axios.get('/index/index/myinfo')
           .then(this.handleDataSucc.bind(this))
           .catch(this.handleDataError.bind(this))
       },
       handleDataSucc (res) {
         res = res ? res.data : null
-        if (res && res.ret && res.data) {
-          res.data.personage && (this.personage = res.data.personage)
+        if (res) {
+          res.personage && (this.personage = res.personage)
+          res.message && (this.message = res.message)
+          res.lately && (this.lately = res.lately)
         } else {
-          this.handleDataError()
+          console.log('test1')
         }
       },
       handleDataError () {
-      },
-      handleLog () {
-        this.show = '!show'
+        console.log('test')
       }
     },
     created () {
@@ -140,8 +122,8 @@
           color: #fefefe
       .icon
         position: absolute
-        top: 2.78rem
-        left: 3rem
+        top: 80%
+        left: 41%
         font-size: .3rem
         color: #fefefe
     .list

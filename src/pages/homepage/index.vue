@@ -28,15 +28,17 @@
     },
     methods: {
       getIndexData () {
-        axios.get('/static/index.json')
+        axios.get('/index/index/main')
           .then(this.handleDataSucc.bind(this))
           .catch(this.handleDataError.bind(this))
       },
       handleDataSucc (res) {
+        console.log(res)
         res = res ? res.data : null
-        if (res && res.ret && res.data) {
-          res.data.slider && (this.sliders = res.data.slider)
-          res.data.lists && (this.lists = res.data.lists)
+        if (res) {
+          res.slider && (this.sliders = res.slider)
+          res.lists && (this.lists = res.lists)
+          console.log(this.sliders)
         } else {
           this.handleDataError()
         }

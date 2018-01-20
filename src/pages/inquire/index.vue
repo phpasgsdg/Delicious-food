@@ -3,28 +3,55 @@
 	  <div class="header">营养查询</div>
 	  <div class="details">
 	 	 <div class="details-img">
-	  		<img class="imgs" src="/static/imgs/inquire.png" alt="">
-	  		<input class="deta-inp" type="text" placeholder="请输入食物名称">
+	  		<img class="imgs" src="http://qifenbao.yungchoyee.top/public/static/imgs/inquire.png" alt="">
+	  		<input class="deta-inp" type="text" placeholder="请输入食物名称" v-model="food">
 	  		<div class="wid border-bottom">
 	  			<h2 class="wid-h">重量（g）</h2>
-	  			<input class="wid-inp " placeholder="请输入总量">
+	  			<input class="wid-inp " placeholder="请输入总量" v-model="weight">
 	  		</div>
 	  		<div class="delet">
 	  			<div class="delet-top iconfont">&#xe76b;</div>
 	  			<div class="delet-left">归零</div>
 	  		</div>
 	  		<div class="hits">
-	  			<button class="hit">点击查询</button>
+	  			<button class="hit" @click="handleSeach">点击查询</button>
 	  		</div>
+	  		<div class="hit-end" v-show="show" v-model='p'>食物的卡路里：{{p}}</div>
 	  	 </div>
 	  </div>
 	  <foot></foot>
 	</div>
 </template>
 <script>
+import axios from 'axios'
 import foot from '../homepage/foot.vue'
 export default {
   name: 'inquire',
+  data () {
+    return {
+      food: '',
+      weight: '',
+      show: false,
+      p: ''
+    }
+  },
+  methods: {
+    handleSeach () {
+      axios.post('/index/food/info', {
+        food: this.food,
+        weight: this.weight
+      })
+      .then(this.handleGetMessageSucc.bind(this))
+      .catch(this.handleGetMessageErr.bind(this))
+    },
+    handleGetMessageSucc (res) {
+      this.p = res.data.cal
+      this.show = true
+    },
+    handleGetMessageErr () {
+      console.log('meiyou')
+    }
+  },
   components: {
     foot
   }
@@ -99,6 +126,15 @@ export default {
 	      left: 3.15rem
 	      font-size: .3rem
 	      color: #fff
+	    .hit-end
+	      width: 100%
+	      height: 1rem
+	      font-size: .4rem
+	      color: #000
+	      line-height: 1rem
+	      text-align: center
+	      border-radius: .2rem
+	      background: #03cfa5
 	    .hits
 	      width: 2.2rem
 	      height: .6rem
@@ -114,5 +150,6 @@ export default {
 	        background: #03cfa5
 	        border: none
 	        border-radius: .2rem
+
 
 </style>
