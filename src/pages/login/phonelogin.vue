@@ -53,15 +53,22 @@
         }
       },
       handleGetCodeSucc (res) {
-        this.code = res.data.code
+        axios.post('/index/user/checkmsg')
+          .then(this.handleSendCodeSucc.bind(this))
+          .catch(this.handleSendCodeErr.bind(this))
+      },
+      handleSendCodeSucc (res) {
+        if (res.data.status === 1) {
+          this.$router.push('/homepage')
+        } else {
+          alert('请输入正确的验证码')
+        }
       },
       handleGetCodeErr () {
-        console.log('验证码获取不正确')
+        console.log('验证码发送错误')
       },
-      handleLogin () {
-        if (this.cellFlag && (this.code === this.authCode)) {
-          this.$router.push('/')
-        }
+      handleSendCodeErr () {
+        console.log('验证码获取错误')
       }
     }
   }
