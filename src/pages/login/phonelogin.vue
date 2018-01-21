@@ -18,7 +18,7 @@
 
     <div class="login-btn" @click="handleLogin">登录</div>
 
-    <router-link to="/login/pwd" class="login-pattern-link">普通登陆</router-link>
+    <router-link to="/login/pwd" class="login-pattern-link" >普通登陆</router-link>
   </div>
 </template>
 
@@ -69,6 +69,19 @@
       },
       handleSendCodeErr () {
         console.log('验证码获取错误')
+      },
+      handleLogin () {
+        axios.post('/index/user/checkmsg', {
+          cellNumber: this.cellNumber
+        })
+        .then(this.handleMessageSucc.bind(this))
+        .catch(this.handMessageErr.bind(this))
+      },
+      handleMessageSucc (res) {
+        this.$router.push('/homepage')
+      },
+      handMessageErr () {
+        alert('请输入正确的验证码')
       }
     }
   }

@@ -5,14 +5,13 @@
     </div>
     <div class="banner">
       <img src="http://qifenbao.yungchoyee.top/public/static/imgs/1.png" alt="" class="img">
-      <div class="person"  v-for="(item, index) in personage"
-           :key="index" v-show = "show">
-        <img :src=" item.imgUrl" alt="" class="person-img">
-        <div class="person-title">{{item.title}}</div>
+      <div class="person" v-show = "show">
+       <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=503286400,676445594&fm=27&gp=0.jpg" alt="" class="person-img">
+        <div class="person-title">风华抵不过流沙</div>
       </div>
       
        <router-link to="/login">
-      <div class="icon iconfont" >点击登录 &#xe62d;</div>
+      <div class="icon iconfont" v-show= "!show" >点击登录 &#xe62d;</div>
       </router-link>
     </div>
     <div class="list">
@@ -48,7 +47,8 @@
         show: false,
         personage: [],
         message: [],
-        lately: []
+        lately: [],
+        userinfo: {}
       }
     },
     components: {
@@ -63,7 +63,6 @@
       handleDataSucc (res) {
         res = res ? res.data : null
         if (res) {
-          res.personage && (this.personage = res.personage)
           res.message && (this.message = res.message)
           res.lately && (this.lately = res.lately)
         } else {
@@ -76,6 +75,13 @@
     },
     created () {
       this.getMessage()
+      try {
+        this.userinfo = JSON.parse(window.localStorage.userinfo)
+      } catch (e) {
+        if (this.userinfo.state) {
+          this.show = true
+        }
+      }
     }
   }
 </script>

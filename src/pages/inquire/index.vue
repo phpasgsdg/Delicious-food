@@ -11,7 +11,7 @@
 	  		</div>
 	  		<div class="delet">
 	  			<div class="delet-top iconfont">&#xe76b;</div>
-	  			<div class="delet-left">归零</div>
+	  			<div class="delet-left" @click="handleDele">归零</div>
 	  		</div>
 	  		<div class="hits">
 	  			<button class="hit" @click="handleSeach">点击查询</button>
@@ -50,6 +50,10 @@ export default {
     },
     handleGetMessageErr () {
       console.log('meiyou')
+    },
+    handleDele () {
+      this.food = ''
+      this.weight = ''
     }
   },
   components: {

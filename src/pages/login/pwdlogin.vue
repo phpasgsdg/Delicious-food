@@ -50,6 +50,7 @@
       handleGetMessageSucc (res) {
         const isLogin = res.data.isLogin
         if (isLogin && res.data.status === 1) {
+          window.localStorage.usernameinfo = JSON.stringify(res.data)
           this.$router.push('/homepage')
         }
       },
