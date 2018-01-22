@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="header">
-      我的
+      我的 <span class="out" v-show = "show" @click="handleOut">退出</span>
     </div>
     <div class="banner">
       <img src="http://qifenbao.yungchoyee.top/public/static/imgs/1.png" alt="" class="img">
@@ -11,7 +11,7 @@
       </div>
       
        <router-link to="/login">
-      <div class="icon iconfont" v-show= "!show" >点击登录 &#xe62d;</div>
+      <div class="icon iconfont" v-show= "!show" @click= "handleLogin">点击登录 &#xe62d;</div>
       </router-link>
     </div>
     <div class="list">
@@ -54,6 +54,11 @@
     components: {
       foot
     },
+    watch: {
+      userinfo () {
+        if (this.userinfo === 1) {}
+      }
+    },
     methods: {
       getMessage () {
         axios.get('/index/index/myinfo')
@@ -71,17 +76,27 @@
       },
       handleDataError () {
         console.log('test')
+      },
+      handleOut () {
+        window.localStorage.usernameinfo = '0'
+        window.location.reload()
+      },
+      handleLogin () {
+        setTimeout(() => {
+          this.show = true
+        }, 4000)
       }
     },
     created () {
       this.getMessage()
       try {
-        this.userinfo = JSON.parse(window.localStorage.userinfo)
-      } catch (e) {
-        if (this.userinfo.state) {
+        this.userinfo = JSON.parse(window.localStorage.usernameinfo)
+        if (this.userinfo === 1) {
           this.show = true
+        } else {
+          this.show = false
         }
-      }
+      } catch (e) {}
     }
   }
 </script>
@@ -103,6 +118,12 @@
       font-size: .32rem
       background: #2fd6b4
       color: #fff
+      .out
+        position: absolute
+        right: .2rem
+        top: .01rem
+        font-size: .3rem
+        color: #fff
     .banner
       position: relative;
       width: 100%

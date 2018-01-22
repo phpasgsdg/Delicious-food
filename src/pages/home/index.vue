@@ -1,28 +1,34 @@
 <template>
   <div class="main">
+    <div class="pass" @click="handleBegin">跳过</div>
     <div class="header">
-    <div class="header-title">
-      <router-link to="/homepage">
-    <img src="http://www.blackmed.cn/public/static/imgs/sy.png" alt="" class="header-img">
-    </router-link>
-  </div>
-  <h2 class="main-h">七分饱</h2>
-  <p class="main-p">每餐七分饱，健康长寿活到老</p>
+      <div class="header-title">
+        <router-link to="/homepage">
+        <img src="http://www.blackmed.cn/public/static/imgs/sy.png" alt="" class="header-img">
+        </router-link>
+      </div>
+      <h2 class="main-h">七分饱</h2>
+      <p class="main-p">每餐七分饱，健康长寿活到老</p>
   </div>
   </div>
 </template>
 <script>
   export default {
     name: 'index',
-    created () {
-      var this_ = this
-      setTimeout(function () {
-        this_.$router.push('/homepage')
-      }, 3000)
+    methods: {
+      handleBegin () {
+        this.$router.push('/homepage')
+      }
     }
   }
 </script>
 <style scoped lang="stylus">
+  .pass
+    position: absolute
+    right: .1rem
+    top: .1rem
+    color: #ccc
+    font-size: .3rem
   .header 
     width: 100%;
   .header-title

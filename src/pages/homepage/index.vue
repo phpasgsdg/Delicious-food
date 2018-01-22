@@ -33,12 +33,10 @@
           .catch(this.handleDataError.bind(this))
       },
       handleDataSucc (res) {
-        console.log(res)
         res = res ? res.data : null
         if (res) {
           res.slider && (this.sliders = res.slider)
           res.lists && (this.lists = res.lists)
-          console.log(this.sliders)
         } else {
           this.handleDataError()
         }

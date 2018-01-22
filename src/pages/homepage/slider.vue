@@ -2,7 +2,7 @@
   <swiper class="banner index-banner" :options="swiperOption">
     <swiper-slide v-for="(item, index) in sliders"
            :key="index" >
-      <router-link to="/explain">
+      <router-link to='/explain/index'>
       <img class="banner-img" :src="item.imgUrl" />
       </router-link>
     </swiper-slide>

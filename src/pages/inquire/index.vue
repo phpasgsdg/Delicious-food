@@ -80,17 +80,18 @@ export default {
       text-align: center
 	.details
 	  flex: 1
-	  padding: .45rem .2rem 0
+	  padding: .45rem 0 0
 	  .details-img
 	    position: relative
-	    width: 7.15rem
-	    height: 7.5rem
+	    width: 100%
+	    height: 7.86rem
+	    text-align: center
 	    .imgs
 	      width: 100%
-	      height: 100%
+	      height: 7.86rem
 	    .deta-inp
 	      position: absolute
-	      left: 2.42rem
+	      left: 36%
 	      top: 2.5rem
 	      width: 2.2rem
 	      height: .6rem
@@ -105,7 +106,7 @@ export default {
 	      height: 1.2rem
 	      position: absolute
 	      top: 3.61rem
-	      left: 2.42rem
+	      left: 36%
 	      &::before
 	        border-bottom: 4px solid #fff
 	      .wid-h
@@ -127,7 +128,7 @@ export default {
 	      text-align: center
 	      position: absolute
 	      top: 5rem
-	      left: 3.15rem
+	      left: 47%
 	      font-size: .3rem
 	      color: #fff
 	    .hit-end
@@ -145,7 +146,7 @@ export default {
 	      border-radius: .1rem
 	      position: absolute
 	      top: 6.17rem
-	      left: 2.42rem
+	      left: 38%
 	      .hit
 	        width: 100%
 	        height: 100%

@@ -1,15 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from 'pages/home'
-import Login from 'pages/login'
+import seach from 'seach/index'
 import PwdLogin from 'pages/login/pwdlogin'
 import PhoneLogin from 'pages/login/phonelogin'
 import Forget from 'pages/login/forget'
 import Register from 'pages/register'
-import homepage from 'homepage/index'
-import seach from 'seach/index'
-import inquire from 'inquire/index'
-import explain from 'explain/index'
 
 Vue.use(Router)
 
@@ -18,13 +13,13 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: Index
+      component: () => import('pages/home')
     },
     {
       path: '/login',
       name: 'login',
       redirect: '/login/pwd',
-      component: Login,
+      component: () => import('pages/login'),
       children: [{
         path: 'pwd',
         name: 'pwdLogin',
@@ -47,7 +42,7 @@ export default new Router({
     {
       path: '/homepage',
       name: 'homepage',
-      component: homepage
+      component: () => import('homepage/index')
     },
     {
       path: '/seach',
@@ -57,12 +52,12 @@ export default new Router({
     {
       path: '/inquire',
       name: 'inquire',
-      component: inquire
+      component: () => import('inquire/index')
     },
     {
       path: '/explain/:sightId',
       name: 'explain',
-      component: explain
+      component: () => import('explain/index')
     }
   ]
 })

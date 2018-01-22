@@ -1,7 +1,7 @@
 <template>
   <div class="logo-box">
     <div class="logo">
-      <img src="../../common/logo.png" alt="">
+      <img src="http://www.blackmed.cn/public/static/imgs/logo.png" alt="">
     </div>
   </div>
 </template>
