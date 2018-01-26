@@ -10,7 +10,7 @@
     </div>
     <div class="login-area">
       <div class="left-area iconfont">
-        &#xe620;
+        &#xe6a1;
       </div>
       <input class="right-area" type="text" placeholder="请输入您的验证码" v-model="authCode">
       <span class="auth-code" @click="handleAuthCodeSend">发送验证码</span>

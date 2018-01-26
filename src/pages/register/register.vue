@@ -10,13 +10,13 @@
     </div>
     <div class="register-area">
       <div class="left-area iconfont">
-        &#xe620;
+        &#xe6a1;
       </div>
       <input class="right-area" type="password" placeholder="请填写密码" v-model="password" @change="handlePwdChange" key="2">
     </div>
     <div class="register-area">
       <div class="left-area iconfont">
-        &#xe613;
+       &#xe637;
       </div>
       <input class="right-area" type="password" placeholder="请填写密码" v-model="verifyPwd" @change="handleVerifyPwdChange" key="3">
     </div>

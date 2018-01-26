@@ -9,7 +9,7 @@
     </div>
     <div class="login-area">
       <div class="left-area iconfont">
-        &#xe6d3;
+       &#xe6a1;
       </div>
       <input class="right-area" type="password" placeholder="请输入您的密码" v-model="password">
     </div>

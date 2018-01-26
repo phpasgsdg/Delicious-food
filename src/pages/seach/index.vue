@@ -4,7 +4,8 @@
       我的 <span class="out" v-show = "show" @click="handleOut">退出</span>
     </div>
     <div class="banner">
-      <img src="http://qifenbao.yungchoyee.top/public/static/imgs/1.png" alt="" class="img">
+      <img src="/static/imgs/bj.png" alt="" class="img">
+      <img v-show = "!show" class="per" src="/static/imgs/min.png" alt="">
       <div class="person" v-show = "show">
        <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=503286400,676445594&fm=27&gp=0.jpg" alt="" class="person-img">
         <div class="person-title">风华抵不过流沙</div>
@@ -132,6 +133,13 @@
       padding-bottom: 46.7%
       margin-bottom: .2rem
       text-align: center
+      .per
+        z-index: 999
+        width: 2.12rem
+        height: 2.12rem
+        position: absolute
+        top: 12%
+        left: 36%
       .img
         width: 100%
       .person
