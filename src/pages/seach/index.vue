@@ -4,13 +4,12 @@
       我的 <span class="out" v-show = "show" @click="handleOut">退出</span>
     </div>
     <div class="banner">
-      <img src="/static/imgs/bj.png" alt="" class="img">
-      <img v-show = "!show" class="per" src="/static/imgs/min.png" alt="">
+      <img src="http://www.blackmed.cn/public/static/imgs/bj.png" alt="" class="img">
+      <img v-show = "!show" class="per" src="http://www.blackmed.cn/public/static/imgs//min.png" alt="">
       <div class="person" v-show = "show">
        <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=503286400,676445594&fm=27&gp=0.jpg" alt="" class="person-img">
         <div class="person-title">风华抵不过流沙</div>
       </div>
-      
        <router-link to="/login">
       <div class="icon iconfont" v-show= "!show" @click= "handleLogin">点击登录 &#xe62d;</div>
       </router-link>
