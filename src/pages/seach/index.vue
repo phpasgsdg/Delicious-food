@@ -11,13 +11,13 @@
         <div class="person-title">风华抵不过流沙</div>
       </div>
        <router-link to="/login">
-      <div class="icon iconfont" v-show= "!show" @click= "handleLogin">点击登录 &#xe62d;</div>
+      <div class="icon iconfont" v-show= "!show">点击登录 &#xe62d;</div>
       </router-link>
     </div>
     <div class="list">
        <div class="list-h">
           <div class="lt" v-for="(item, index) in message"
-           :key="index">
+           :key="index" @click="handlehide">
             <img class="lt-img" :src=" item.imgUrl" alt="">
             <h2 class="letter">{{item.state}}</h2>
           </div>
@@ -54,10 +54,15 @@
     components: {
       foot
     },
-    watch: {
-      userinfo () {
-        if (this.userinfo === 1) {}
-      }
+    activiated () {
+      try {
+        this.userinfo = JSON.parse(window.localStorage.usernameinfo)
+        if (this.userinfo === 1) {
+          this.show = true
+        } else {
+          this.show = false
+        }
+      } catch (e) {}
     },
     methods: {
       getMessage () {
@@ -81,22 +86,14 @@
         window.localStorage.usernameinfo = '0'
         window.location.reload()
       },
-      handleLogin () {
-        setTimeout(() => {
-          this.show = true
-        }, 4000)
+      handlehide (e) {
+        if (e.target.innerHTML === '签到') {
+          this.$router.push('/signin')
+        }
       }
     },
     created () {
       this.getMessage()
-      try {
-        this.userinfo = JSON.parse(window.localStorage.usernameinfo)
-        if (this.userinfo === 1) {
-          this.show = true
-        } else {
-          this.show = false
-        }
-      } catch (e) {}
     }
   }
 </script>
@@ -159,7 +156,7 @@
         top: 80%
         left: 41%
         font-size: .3rem
-        color: #fefefe
+        color: #fff
     .list
       flex: 1
       .list-h

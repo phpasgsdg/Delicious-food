@@ -5,6 +5,8 @@ import PwdLogin from 'pages/login/pwdlogin'
 import PhoneLogin from 'pages/login/phonelogin'
 import Forget from 'pages/login/forget'
 import Register from 'pages/register'
+import Signin from 'pages/signin'
+import article from 'pages/article'
 
 Vue.use(Router)
 
@@ -38,6 +40,16 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: Register
+    },
+    {
+      path: '/signin',
+      name: 'signin',
+      component: Signin
+    },
+    {
+      path: '/article/:sightId',
+      name: 'article',
+      component: article
     },
     {
       path: '/homepage',

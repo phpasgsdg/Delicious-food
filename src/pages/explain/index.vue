@@ -6,18 +6,55 @@
          <div class="header-l iconfont">&#xe622;</div>
        </router-link>
      </div>
-     <div class="ico header-c">详情</div>
+     <div class="ico header-c">列表</div>
      <div class="ico header-r iconfont">&#xe603;</div>
    </div>
    <div class="nav-img">
-     <img class="l-img" src='/static/imgs/expla.png' alt="">
+    <ul>
+      <router-link  v-for="(item, index) in essay"
+           :key="index" class="nav-li" tag="li" :to="'/article/' + item.eid">
+        <h3 class="nav-h3">{{item.title}}</h3>
+        <img class="icon" :src="item.pic"  alt="">
+        <p class="nav-p">{{item.auth}} <br><span class="nav-spn">{{item.addtime}}</span></p>
+      </router-link>
+    </ul>
    </div>
-
   </div>
 </template>
 <script>
+  import axios from 'axios'
   export default {
-    name: 'index'
+    name: 'index-explain',
+    data () {
+      return {
+        essay: []
+      }
+    },
+    watch: {
+      essay () {
+        this.$nextTick(() => {})
+      }
+    },
+    methods: {
+      getIndexData () {
+        axios.post('/index/essay/lists', {id: this.$route.params.sightId})
+          .then(this.handleDataSucc.bind(this))
+          .catch(this.handleDataError.bind(this))
+      },
+      handleDataSucc (res) {
+        res = res ? res.data : null
+        if (res) {
+          res.essay && (this.essay = res.essay)
+        }
+      },
+      handleDataError () {
+        console.log('error')
+        console.log(this.$route.params)
+      }
+    },
+    activated () {
+      this.getIndexData()
+    }
   }
 </script>
 <style scoped lang="stylus">
@@ -50,7 +87,29 @@
         margin-right: .2rem
     .nav-img
       flex: 1
-      .l-img
+      background: #fff
+      padding: .1rem
+      .nav-li
         width: 100%
-        height: 100%
+        height: 3rem
+        margin-top: .3rem
+        background: #eee
+        border-radius: 0.2rem
+        .nav-h3
+          font-size: 0.26rem
+          color: #000
+          font-weight: 900
+          padding: .4rem 0 .4rem .2rem
+        .nav-p
+          font-size: .2rem
+          color: #000
+          text-align: right
+          margin-right: .2rem
+          .nav-spn
+            font-size: .2rem
+            color: #000
+        .icon
+          margin-left: .5rem
+          height: 1.5rem
+          width: 3rem
 </style>

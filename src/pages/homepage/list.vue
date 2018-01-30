@@ -3,7 +3,7 @@
     <div class="list-title" >
       <router-link class="list-z border-rightbottom"  
            v-for="(item, index) in lists"
-           :key="index" tag="div" :to="'/explain/' + item.id">
+           :key="index" tag="div" :to="'/explain/' + item.id" >
         <img class="icon" :src="item.imgUrl"  alt="">
         <div class="letter">{{item.state}}</div>   
       </router-link>

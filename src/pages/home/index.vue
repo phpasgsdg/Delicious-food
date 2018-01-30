@@ -4,7 +4,7 @@
     <div class="header">
       <div class="header-title">
         <router-link to="/homepage">
-        <img src="http://www.blackmed.cn/public/static/imgs/sy.png" alt="" class="header-img">
+        <img src="http://www.blackmed.cn/static/imgs/sy.png" alt="" class="header-img">
         </router-link>
       </div>
       <h2 class="main-h">七分饱</h2>
