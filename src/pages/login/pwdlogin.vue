@@ -5,13 +5,15 @@
       <div class="left-area iconfont">
         &#xe611;
       </div>
-      <input class="right-area" type="text" placeholder="请输入您的用户名" v-model="username">
+      <input class="right-area" type="text" placeholder="首字符为英文字母的6-16位字母+数字
+" v-model="username">
     </div>
     <div class="login-area">
       <div class="left-area iconfont">
        &#xe6a1;
       </div>
-      <input class="right-area" type="password" placeholder="请输入您的密码" v-model="password">
+      <input class="right-area" type="password" placeholder="首字符为英文字母的6-16为密码
+" v-model="password">
     </div>
     <login-choose></login-choose>
     <div class="login-btn" @click="handleClickLogin">登录</div>

@@ -47,7 +47,7 @@
         console.log(this.$route.params.sightId)
       },
       dandledClick () {
-        this.$router.go(-1)
+        this.$router.push('/homepage')
       }
     },
     activated () {

@@ -39,7 +39,6 @@
     methods: {
       handleGetUserSucc (res) {
         this.isLogin = res.data.personage.islogin
-        console.log(this.isLogin)
       },
       handleGetUserErr () {
         console.log('用户未登录')
@@ -59,11 +58,15 @@
           alert('请先登录再签到')
         }
       },
-      handleSigninSucc () {
-        alert('签到成功')
-        axios.get('/index/user/signday')
-          .then(this.handleGetSignInfoSucc.bind(this))
-          .catch(this.handleGetSignInfoErr.bind(this))
+      handleSigninSucc (res) {
+        if (res.data.state) {
+          alert(res.data.msg)
+          axios.get('/index/user/signday')
+            .then(this.handleGetSignInfoSucc.bind(this))
+            .catch(this.handleGetSignInfoErr.bind(this))
+        } else {
+          alert(res.data.msg)
+        }
       },
       handleSigninErr () {
         console.log('签到失败')

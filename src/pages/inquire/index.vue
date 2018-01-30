@@ -3,7 +3,7 @@
 	  <div class="header">营养查询</div>
 	  <div class="details">
 	 	 <div class="details-img">
-	  		<img class="imgs" src="http://www.blackmed.cn/static/imgs/inquire.png" alt="">
+	  		<img class="imgs" src="/static/imgs/inquire.png" alt="">
 	  		<input class="deta-inp" type="text" placeholder="请输入食物名称" v-model="food">
 	  		<div class="wid border-bottom">
 	  			<h2 class="wid-h">重量（g）</h2>

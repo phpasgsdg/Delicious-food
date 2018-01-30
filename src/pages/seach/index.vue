@@ -4,11 +4,11 @@
       我的 <span class="out" v-show = "show" @click="handleOut">退出</span>
     </div>
     <div class="banner">
-      <img src="http://www.blackmed.cn/public/static/imgs/bj.png" alt="" class="img">
-      <img v-show = "!show" class="per" src="http://www.blackmed.cn/public/static/imgs//min.png" alt="">
+      <img src="/static/imgs/bj.png" alt="" class="img">
+      <img v-show = "!show" class="per" src="/static/imgs//min.png" alt="">
       <div class="person" v-show = "show">
-       <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=503286400,676445594&fm=27&gp=0.jpg" alt="" class="person-img">
-        <div class="person-title">风华抵不过流沙</div>
+       <img :src="userImg" alt="" class="person-img">
+        <div class="person-title">{{this.username}}</div>
       </div>
        <router-link to="/login">
       <div class="icon iconfont" v-show= "!show">点击登录 &#xe62d;</div>
@@ -48,21 +48,13 @@
         personage: [],
         message: [],
         lately: [],
-        userinfo: {}
+        userinfo: {},
+        userImg: '',
+        username: ''
       }
     },
     components: {
       foot
-    },
-    activiated () {
-      try {
-        this.userinfo = JSON.parse(window.localStorage.usernameinfo)
-        if (this.userinfo === 1) {
-          this.show = true
-        } else {
-          this.show = false
-        }
-      } catch (e) {}
     },
     methods: {
       getMessage () {
@@ -75,6 +67,11 @@
         if (res) {
           res.message && (this.message = res.message)
           res.lately && (this.lately = res.lately)
+          if (res.personage && res.personage.title) {
+            this.show = true
+            this.userImg = res.personage.imgUrl
+            this.username = res.personage.title
+          }
         } else {
           console.log('test1')
         }
@@ -83,14 +80,27 @@
         console.log('test')
       },
       handleOut () {
-        window.localStorage.usernameinfo = '0'
-        window.location.reload()
+        axios.get('/index/user/logout')
+          .then(this.handleLoSucc.bind(this))
+          .catch(this.handleLoError.bind(this))
+      },
+      handleLoSucc (res) {
+        res = res ? res.data : null
+        if (res.status === 1) {
+          this.show = false
+        }
+      },
+      handleLoError () {
+        console.log('test')
       },
       handlehide (e) {
         if (e.target.innerHTML === '签到') {
           this.$router.push('/signin')
         }
       }
+    },
+    activated () {
+      this.getMessage()
     },
     created () {
       this.getMessage()

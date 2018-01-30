@@ -30,6 +30,9 @@
       handleGallaryClose () {
         this.show = false
       }
+    },
+    activated () {
+      this.show = false
     }
   }
 </script>

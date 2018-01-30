@@ -4,28 +4,12 @@
      <div class="header">
        <div class="header-z">
          <i class="iconfont header-seach" @click="handleInput">&#xe603;</i>
-         <input class="import" @input="handleInputChange" placeholder="输入你要搜索的内容" ref="inp" >
+         <input class="import" placeholder="输入你要搜索的内容" ref="inp" >
        </div> 
        <div @click="handleGallaryClose" class="cancel iconfont">&#xe613;</div>
      </div>
    </div>
-   <div class="search-list" v-show="showList" ref="list">
-      <ul>
-        <li class="search-item border-bottom" v-show="!filterResult.length">
-          无数据显示
-        </li>
-        <li class="search-item border-bottom" v-for="item in filterResult" @click="handleDianji">
-          {{item.name}}
-        </li>
-      </ul>
-    </div>
-  <div class="collect">
-    <div class="history">
-      <h2 class="history-title">历史记录<span class="history-clear" @click="handleClear">清除</span></h2>
-      <ul class="history-list">
-        <li class="list-h" v-for="item of list">{{item.name}}</li>
-      </ul>
-    </div>
+  <div class="collect" v-show= "!showList">
     <div class="hot">
       <h2 class="hot-title">热门搜素</h2>
       <ul class="hot-list">
@@ -36,6 +20,20 @@
       </ul> 
     </div>  
   </div>
+
+  <div class="nav-img" v-show="showList">
+    <ul>
+      <router-link  v-for="(item, index) in essayed"
+           :key="index" class="nav-li" tag="li" :to="'/article/' + item.eid">
+        <h3 class="nav-h3">{{item.title}}</h3>
+        <img class="icon" :src="item.pic"  alt="">
+        <p class="nav-p">{{item.auth}} <br><span class="nav-spn">{{item.addtime}}</span></p>
+      </router-link>
+    </ul>
+   </div>
+
+
+
   </div>
 </template>
 
@@ -47,7 +45,7 @@
       return {
         list: [{'name': '减肥', 'spell': 'jianfei'}, {'name': '吃什么能降血脂', 'spell': 'chishemenengjiangxuezhi'}, {'name': '多运动', 'spell': 'duoyund'}],
         showList: false,
-        filterResult: []
+        essayed: []
       }
     },
     methods: {
@@ -55,32 +53,25 @@
         this.$emit('close')
       },
       handleInput (e) {
-        axios.get('/api/search.json')
+        console.log(this.$refs.inp.value)
+        axios.post('/index/essay/essay_search', {
+          keyword: this.$refs.inp.value})
           .then(this.handleGetListSucc.bind(this))
           .catch(this.handleGetListErr.bind(this))
         this.$refs.inp.value = ''
       },
       handleGetListSucc (res) {
-        alert(123)
+        res = res ? res.data : null
+        if (res) {
+          res.essay && (this.essayed = res.essay)
+          this.showList = true
+        }
       },
-      handleDianji (e) {
-        console.log(e.target.innerHTMl)
+      handleGetListErr () {
+        alert('么有您要的内容')
       },
       handleClear (e) {
         this.list = []
-      },
-      handleInputChange (e) {
-        const value = e.target.value.toLowerCase()
-        if (value) {
-          this.showList = true
-          this.filterResult = this.list.filter((item) => {
-            if (item.spell.indexOf(value) > -1 || item.name.indexOf(value) > -1) {
-              return true
-            }
-          })
-        } else {
-          this.showList = false
-        }
       }
     }
   }
@@ -131,28 +122,6 @@
         .search-item 
           margin-bottom: .2rem
     .collect
-      flex: 1
-      margin: 0 .2rem
-      .history
-        margin-bottom: .3rem
-        .history-title
-          font-size: .3rem
-          color: #222627
-          margin-bottom: .2rem
-          .history-clear
-            float: right
-        .history-list
-          display: flex
-          flex-wrap: wrap
-          .list-h
-            height: .6rem
-            line-height: .6rem
-            text-align: center
-            border-radius: .2rem
-            margin: 0 .2rem .2rem 0
-            background: #fff
-            font-size: .3rem
-            color: #000
       .hot
         .hot-title
           font-size: .3rem
@@ -170,4 +139,36 @@
             background: #fff
             font-size: .3rem
             color: #000
+    .nav-img
+      position: absolute
+      top: 2rem
+      left: 0
+      right: 0
+      bottom: 0
+      flex: 1
+      background: #fff
+      padding: .1rem
+      .nav-li
+        width: 100%
+        height: 3rem
+        margin-top: .3rem
+        background: #eee
+        border-radius: 0.2rem
+        .nav-h3
+          font-size: 0.26rem
+          color: #000
+          font-weight: 900
+          padding: .4rem 0 .4rem .2rem
+        .nav-p
+          font-size: .2rem
+          color: #000
+          text-align: right
+          margin-right: .2rem
+          .nav-spn
+            font-size: .2rem
+            color: #000
+        .icon
+          margin-left: .5rem
+          height: 1.5rem
+          width: 3rem
 </style>
