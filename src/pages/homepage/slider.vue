@@ -1,10 +1,13 @@
 <template>
   <swiper class="banner index-banner" :options="swiperOption">
-    <swiper-slide v-for="(item, index) in sliders"
-           :key="index" >
-      <router-link to='/explain/index'>
-      <img class="banner-img" :src="item.imgUrl" />
-      </router-link>
+    <swiper-slide  > 
+      <img class="banner-img" src="/static/imgs/banner.jpg" />
+    </swiper-slide>
+    <swiper-slide  > 
+      <img class="banner-img" src="/static/imgs/banner1.jpg" />
+    </swiper-slide>
+    <swiper-slide  > 
+      <img class="banner-img" src="/static/imgs/banner2.jpg" />
     </swiper-slide>
     <div class="swiper-pagination"  slot="pagination"></div>
   </swiper>
@@ -13,8 +16,7 @@
   export default {
     name: 'index-slider',
     props: {
-      sliders: Array,
-      default: []
+      sliders: Array
     },
     data () {
       return {

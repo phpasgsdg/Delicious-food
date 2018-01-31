@@ -1,15 +1,10 @@
 <template>
-  <div class="explain">
-   <div class="header">
-     <div class="ico ">
-       <router-link to="/homepage">
-         <div class="header-l iconfont">&#xe622;</div>
-       </router-link>
-     </div>
-     <div class="ico header-c">列表</div>
-     <div class="ico header-r iconfont">&#xe603;</div>
-   </div>
-   <div class="nav-img">
+  <div class="reading">
+    <div class="read">
+      <div class="header-l read-icn iconfont" @click="handleRead">&#xe622;</div>
+      <div class="header-l">收藏</div>
+    </div>
+    <div class="nav-img">
     <ul>
       <router-link  v-for="(item, index) in essay"
            :key="index" class="nav-li" tag="li" :to="'/article/' + item.eid">
@@ -24,74 +19,75 @@
 <script>
   import axios from 'axios'
   export default {
-    name: 'index-explain',
+    name: 'index-collect',
     data () {
       return {
         essay: []
       }
     },
-    watch: {
-      essay () {
-        this.$nextTick(() => {})
-      }
-    },
     methods: {
-      getIndexData () {
-        axios.post('/index/essay/lists', {id: this.$route.params.sightId})
-          .then(this.handleDataSucc.bind(this))
-          .catch(this.handleDataError.bind(this))
+      handleGetUserSucc (res) {
+        this.isLogin = res.data.personage.islogin
+        if (this.isLogin) {
+          this.getCollect()
+        }
       },
-      handleDataSucc (res) {
+      handleGetUserErr () {
+        console.log('用户未登录')
+      },
+      getCollect () {
+        axios.post('/index/essay/shoucang')
+         .then(this.handleGetSignInfoSucc.bind(this))
+         .catch(this.handleGetSignInfoErr.bind(this))
+      },
+      handleGetSignInfoSucc (res) {
+        console.log(res)
         res = res ? res.data : null
         if (res) {
           res.essay && (this.essay = res.essay)
         }
       },
-      handleDataError () {
-        console.log('error')
-        console.log(this.$route.params)
+      handleGetSignInfoErr () {
+        console.log('获取数据失败')
+      },
+      handleRead () {
+        this.$router.push('/seach')
       }
     },
-    activated () {
-      this.getIndexData()
+    created () {
+      axios.post('/index/index/myinfo')
+        .then(this.handleGetUserSucc.bind(this))
+        .catch(this.handleGetUserErr.bind(this))
     }
   }
 </script>
 <style scoped lang="stylus">
-  .explain
-    display: flex
-    flex-direction: column
-    position: absolute
-    top: 0
-    right: 0
-    bottom: 0
-    left: 0
-    .header
+    .read
       display: flex
-      justify-content: center
       align-items: center
-      min-height: 1rem
+      height: 1rem
       width: 100%
-      background: #2fd6b4
-      .ico
-        width: 33.3%
-        font-size: .4rem
-        color: #fff
+      background: #eee
       .header-l
-        margin-left: .2rem
-        color: #fff
-      .header-c
-        text-align: center
-      .header-r
-        text-align: right
-        margin-right: .2rem
+        width: 40%
+        font-size: .36rem
+        font-weight: 900
+        color: #000
+      .read-icn
+        padding-left: .2rem
     .nav-img
-      flex: 1
+      display: flex
+      flex-direction: column
+      position: absolute
+      top: 1rem
+      right: 0
+      bottom: 0
+      left: 0
       background: #fff
       padding: .1rem
       .nav-li
         width: 100%
-        height: 3.5rem
+        height: 3rem
         margin-top: .3rem
         background: #eee
         border-radius: 0.2rem

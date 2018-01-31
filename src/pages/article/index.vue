@@ -9,6 +9,7 @@
    <div class="arct" v-html='content'>
      {{content}}
    </div>
+   <div class="collect" @click="handlecollect">收藏</div>
   </div>
 </template>
 <script>
@@ -46,12 +47,42 @@
       handleDataError () {
         console.log(this.$route.params.sightId)
       },
+      handleGetUserSucc (res) {
+        this.isLogin = res.data.personage.islogin
+      },
+      handleGetUserErr () {
+        console.log('用户未登录')
+      },
       dandledClick () {
         this.$router.push('/homepage')
+      },
+      handlecollect () {
+        if (this.isLogin) {
+          axios.post('index/essay/collect', {eid: this.$route.params.sightId})
+            .then(this.handleCollSucc.bind(this))
+            .catch(this.handleCllError.bind(this))
+        } else {
+          alert('请先登录再收藏')
+        }
+      },
+      handleCollSucc (res) {
+        if (res.data.status) {
+          alert(res.data.msg)
+        } else if (res.data.status === 0) {
+          alert(res.data.msg)
+        }
+      },
+      handleCllError () {
+        alert('请求错误')
       }
     },
     activated () {
       this.getIndexData()
+    },
+    created () {
+      axios.post('/index/index/myinfo')
+        .then(this.handleGetUserSucc.bind(this))
+        .catch(this.handleGetUserErr.bind(this))
     }
   }
 </script>
@@ -85,4 +116,16 @@
     .arct
       flex: 1
       background: #eee
+    .collect
+      position: fixed
+      bottom: .2rem
+      right: .2rem
+      width: 1rem
+      height: 1rem
+      line-height: 1rem
+      text-align: center
+      font-size: .4rem
+      background: pink
+      border-radius: .5rem
+      color: #000
 </style>

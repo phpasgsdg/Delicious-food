@@ -25,7 +25,7 @@
        <div class="list-f">
          <div class="lis border-topbottom" v-for="(item, index) in lately"
            :key="index">
-           <div class="lis-tit">
+           <div class="lis-tit" @click="handleNear">
              <img class="lis-img" :src=" item.imgUrl" alt="">
              <div class="lis-let">{{item.state}}</div>
            </div>
@@ -96,6 +96,13 @@
       handlehide (e) {
         if (e.target.innerHTML === '签到') {
           this.$router.push('/signin')
+        } else if (e.target.innerHTML === '收藏') {
+          this.$router.push('/collect')
+        }
+      },
+      handleNear (e) {
+        if (e.target.innerHTML === '最近阅读') {
+          this.$router.push('/reading')
         }
       }
     },

@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import seach from 'seach/index'
+import Seach from 'seach/index'
 import PwdLogin from 'pages/login/pwdlogin'
 import PhoneLogin from 'pages/login/phonelogin'
 import Forget from 'pages/login/forget'
 import Register from 'pages/register'
 import Signin from 'pages/signin'
-import article from 'pages/article'
+import Article from 'pages/article'
+import Reading from 'pages/reading'
+import Collect from 'pages/collect'
 
 Vue.use(Router)
 
@@ -42,6 +44,11 @@ export default new Router({
       component: Register
     },
     {
+      path: '/reading',
+      name: 'reading',
+      component: Reading
+    },
+    {
       path: '/signin',
       name: 'signin',
       component: Signin
@@ -49,7 +56,7 @@ export default new Router({
     {
       path: '/article/:sightId',
       name: 'article',
-      component: article
+      component: Article
     },
     {
       path: '/homepage',
@@ -59,7 +66,12 @@ export default new Router({
     {
       path: '/seach',
       name: 'seach',
-      component: seach
+      component: Seach
+    },
+    {
+      path: '/collect',
+      name: 'collect',
+      component: Collect
     },
     {
       path: '/inquire',

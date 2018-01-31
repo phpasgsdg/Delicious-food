@@ -9,13 +9,13 @@
 	    </div>
       <div class="foot-title" >
         <router-link class="footlat" to="/inquire">
-        <img class="foot-img" src='http://www.blackmed.cn/public/static/imgs/f_05.png'alt="">
+        <img class="foot-img" src='/static/imgs/f_05.png'alt="">
         <div class="foot-letter">营养查询</div>
         </router-link>       
       </div>
       <div class="foot-title" >
       <router-link to="/seach">
-        <img class="foot-img" src='http://www.blackmed.cn/public/static/imgs/f_07.png' alt="">
+        <img class="foot-img" src='/static/imgs/f_07.png' alt="">
         <div class="foot-letter">我的</div> 
       </router-link>      
       </div>

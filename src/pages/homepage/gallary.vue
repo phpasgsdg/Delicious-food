@@ -24,7 +24,7 @@
   <div class="nav-img" v-show="showList">
     <ul>
       <router-link  v-for="(item, index) in essayed"
-           :key="index" class="nav-li" tag="li" :to="'/article/' + item.eid">
+           :key="index" class="nav-li" tag="li" :to="'/article/' + item.eid" >
         <h3 class="nav-h3">{{item.title}}</h3>
         <img class="icon" :src="item.pic"  alt="">
         <p class="nav-p">{{item.auth}} <br><span class="nav-spn">{{item.addtime}}</span></p>
